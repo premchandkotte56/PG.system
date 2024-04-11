@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <table cellspacing="0" border="1">
+            <h1>{{t.PG_Name}}</h1>
+            <tr><th>Full_name</th><th>Email</th><th>Mobile_number</th><th>sharing_person</th><th>price_person</th><th>delete</th></tr>
+            {% for i in res %}
+            <tr><th>{{i.Full_name}}</th><th>{{i.Email}}</th><th>{{i.Mobile_number}}</th><th>{{i.sharing_person}}</th><th>{{i.price_person}}</th><th><a href="{%url 'deleteurl' i.id%}">delete</a></th></tr>
+
+            {%endfor%}
+            <a href="{% url 'pgshareurl'%}"><button>ADD share</button></a>
+        </table>
+        <a href="{% url 'pglogouturl' %}"><button>logout</button></a>
+    </body>
+</html>

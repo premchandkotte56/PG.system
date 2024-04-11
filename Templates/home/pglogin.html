@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: cursive;
+        }
+
+        img {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        .login {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .container input[type="text"] {
+            width: 300px;
+            height: 45px;
+            border: none;
+            outline: none;
+            padding: 0 7px;
+            border-radius: 6px;
+            color: black;
+            background-color: transparent;
+            font-size: 15px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 1), -1px -1px 6px rgba(255, 255, 255, 0.4);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .container input[type="text"]:focus {
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 1), -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1), inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+        }
+
+        .container .label {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 15px;
+            color: white;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .container input[type="text"]:valid ~ .label,
+        .container input[type="text"]:focus ~ .label {
+            padding-left: 2px;
+            transform: translateY(-35px);
+        }
+
+        input[type="submit"] {
+            width: 300px;
+            height: 45px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: none;
+            background-color: white;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 15px;
+            transition: all 0.5s ease;
+        }
+
+        input[type="submit"]:hover {
+            letter-spacing: 3px;
+            background-color: black;
+            color: white;
+            box-shadow: 0 7px 29px rgba(0, 0, 0, 0.5);
+        }
+
+        input[type="submit"]:active {
+            letter-spacing: 3px;
+            background-color: hsl(261deg 80% 48%);
+            color: white;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            transform: translateY(10px);
+            transition: 100ms;
+        }
+    </style>
+</head>
+<body>
+    <img src="{% static 'images/clay-banks-u27Rrbs9Dwc-unsplash.jpg' %}" alt="">
+    <div class="login">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="container">
+                <input required="" type="text" name="uname">
+                <label class="label">Username</label>
+            </div>
+            <div class="container">
+                <input required="" type="text" name="pwd">
+                <label class="label">Password</label>
+            </div>
+            <input type="submit" value="Login">
+            <br><br>
+            <a href="">Forgot password?</a>
+            <br>
+            New register?<a href="{% url 'pgsignupurl' %}">Signup</a>
+        </form>
+    </div>
+</body>
+</html>

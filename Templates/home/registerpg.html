@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <form action="" method="post">
+            {% csrf_token %}
+                <!-- {{form.as_p}} -->
+                <!-- <input type="text" placeholder="Enter registration id" name="registerid"> <br><br> -->
+                <!-- <a href="{% url 'pgdetailsurl'%}"><button>Back</button></a> -->
+                <label for="">pg_id:</label>&ensp;{{obj.PG_code.PG_Code}} <br><br>
+                <input type="text" placeholder="Enter full name" name="name"><br><br>
+                <input type="text" placeholder="Enter email" name="email"><br><br>
+                <input type="text" placeholder="Enter mobile number" name="mobile"><br><br>
+                <input type="submit" value="Register_PG"><br><br>
+                <a href="{% url 'pgdetailsurl' %}"><button>Back</button></a>
+        </form>
+    </body>
+</html>

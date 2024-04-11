@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: cursive;
+            background-color: white;         
+        }
+    
+        .login {
+            position: absolute;
+            top: 150px;
+            left: 550px;             
+        }
+
+        .login input[type=submit] {
+            width: 215px;
+            height: 45px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            position: relative;
+            color: black;
+        }
+
+        .container .label {
+            font-size: 15px;
+            padding-left: 10px;
+            position: absolute;
+            top: 13px;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        .input {
+            width: 200px;
+            height: 45px;
+            border: none;
+            outline: none;
+            padding: 0px 7px;
+            border-radius: 6px;
+            color: black;
+            background-color: transparent;
+            font-size: 15px;
+            background-color: transparent;
+            box-shadow: 3px 3px 10px rgba(0,0,0,1),
+            -1px -1px 6px rgba(255, 255, 255, 0.4);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .input:focus {
+            border: 2px solid transparent;
+            color: black;
+            box-shadow: 3px 3px 10px rgba(0,0,0,1),
+            -1px -1px 6px rgba(255, 255, 255, 0.4),
+            inset 3px 3px 10px rgba(0,0,0,1),
+            inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+        }
+
+        .container .input:valid ~ .label,
+        .container .input:focus ~ .label {
+            transition: 0.3s;
+            padding-left: 2px;
+            transform: translateY(-35px);
+        }
+
+        .container .input:valid,
+        .container .input:focus {
+            box-shadow: 3px 3px 10px rgba(0,0,0,1),
+            -1px -1px 6px rgba(255, 255, 255, 0.4),
+            inset 3px 3px 10px rgba(0,0,0,1),
+            inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+        }
+
+        input[type=submit] {
+            padding: 17px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 0;
+            background-color: black;
+            color: white;
+            box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 15px;
+            transition: all 0.5s ease;
+        }
+
+        input[type=submit]:hover {
+            letter-spacing: 3px;
+            background-color: hsl(0, 0%, 0%);
+            color: hsl(0, 0%, 100%);
+            box-shadow: rgb(0 0 0) 0px 7px 29px 0px;
+        }
+
+        input[type=submit]:active {
+            letter-spacing: 3px;
+            background-color: hsl(261deg 80% 48%);
+            color: hsl(0, 0%, 100%);
+            box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+            transform: translateY(10px);
+            transition: 100ms;
+        }
+
+        .under {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="login">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="container">
+                <input required="" type="text" name="uname" class="input"><br><br>
+                <label class="label">Username</label>
+            </div>
+
+            <div class="container">
+                <input required="" type="text" name="pwd" class="input"><br>
+                <label class="label">Password</label>
+            </div>
+
+            <input type="submit" value="login"><br><br>
+            <div class="under">
+                <a href="">forgot password?</a><br>
+                New register?<a href="{% url 'studentsignupurl' %}">signup</a>
+            </div>
+        </form>
+    </div>
+<!-- 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const inputs = document.querySelectorAll(".input");
+
+            inputs.forEach(input => {
+                input.addEventListener("focus", function() {
+                    input.classList.add("active");
+                });
+
+                input.addEventListener("blur", function() {
+                    if (input.value === "") {
+                        input.classList.remove("active");
+                    }
+                });
+            });
+        });
+    </script> -->
+</body>
+</html>

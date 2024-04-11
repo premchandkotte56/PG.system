@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .search{
+                position: relative;
+                left: 500px;
+            }
+            .search input[type=text]{
+                height: 30px;
+                width: 200px;
+            }
+            .search input[type=submit]{
+                height: 30px;
+                width: 60px;
+            }
+            .head{
+                background-color: bisque;
+            }
+            .tab{
+                position: relative;
+                top: 60px;
+            }
+            table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd; /* Set border color if needed */
+        }
+
+        .dd:hover {
+            background-color: #f5f5f5;
+            cursor: pointer; /* Set hover background color if needed */
+        }
+        .end{
+            position: absolute;
+            bottom: 10px;
+        }
+        </style>
+    </head>
+    <body>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="search">
+            <input type="text" name="search" placeholder="search location">&nbsp;&nbsp;&nbsp;
+            <input type="submit" value="Search">
+        </div>
+        <div class="tab">
+        </form>
+        {% if myvar == 0 %}
+        <table border="1" cellspacing="0">
+            <tr class="head"><th>pg_code</th><th>pg_name</th><th>Address</th><th>Sharing</th><th>Price</th><th>vacancy</th></tr>
+            {% for i in form2 %} 
+            <tr class='dd' onclick="handleRowClick('{{i.id}}')"><th>{{i.PG_code.PG_Code}}</th><th>{{i.PG_code.PG_Name}}</th><th>{{i.PG_code.Address}}</th><th>{{i.Sharing}}</th><th>{{i.price}}</th><th>{{i.vacancies}}</th></tr>
+            {%endfor%}
+        </table>
+        {%else%}
+        <table border="1" cellspacing="0">
+            <tr class="head"><th>pg_code</th><th>pg_name</th><th>Address</th><th>Sharing</th><th>Price</th><th>vacancy</th></tr>
+            {% for j in form %}
+            <tr class="dd" onclick="handleRowClick('{{j.id}}')"><th>{{j.PG_code.PG_Code}}</th><th>{{j.PG_code.PG_Name}}</th><th>{{j.PG_code.Address}}</th><th>{{j.Sharing}}</th><th>{{j.price}}</th><th>{{j.vacancies}}</th></tr>
+            {%endfor%}
+            {%endif%}
+        </table>
+    </div>
+    <div class="end">
+        <a href=""><button>&#8678;Back</button></a>
+        <a href="{% url 'logouturl' %}">logout</a>
+    </div>
+        <script>
+            function handleRowClick(pgCode) {
+                // Perform actions when a row is clicked, for example, redirect to a detail page
+                window.location.href = '/firstpage/complete/' + pgCode; // Replace with your actual URL
+            }
+        </script>
+    </body>
+</html>

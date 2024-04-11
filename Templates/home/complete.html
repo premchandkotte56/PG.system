@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            overflow: hidden;
+        }
+
+        .left {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            animation: fadeInUp 1s ease forwards;
+        }
+        .left p{
+            text-align: justify;
+        }
+        .right{
+            float: right;
+            margin-right: 30px;
+            margin-top: 30PX;
+        }
+
+        .right img {
+            width: 550px;
+            height: 400px;
+            display: block;
+            margin: 0 auto;
+            transform: translateY(-100%);
+            animation: slideIn 1s ease forwards;
+        }
+        .right button {
+    position: absolute;
+    bottom: 10px; /* Adjust bottom position as needed */
+    left: 50%; /* Move button to horizontal center */
+    transform: translateX(-50%); /* Adjust button position to center */
+    z-index: 1;
+        }
+
+        .left h3,.left p,.right button {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* Apply animations to each h3 individually */
+        .left h3:nth-child(2) {
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+        .left h3:nth-child(3) {
+            animation: fadeInUp 1s ease 1s forwards;
+        }
+        .left h3:nth-child(4) {
+            animation: fadeInUp 1s ease 1.5s forwards;
+        }
+        .left h3:nth-child(5) {
+            animation: fadeInUp 1s ease 2s forwards;
+        }
+        .left p:nth-child(6) {
+            animation: fadeInUp 1s ease 2.5s forwards;
+        }
+        .right button {
+            animation: fadeInUp 1s ease 3s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="right">
+            <img src="{{data.image.url}}" alt="">
+            <a href="{% url 'registerpgurl' data.id %}"><button>Register</button></a>
+        </div>
+        <div class="left">
+            <h1>{{data.PG_code.PG_Name}}</h1>
+            <h3>{{data.Sharing}}</h3>
+            <h3>PRICE: {{data.price}}INR</h3>
+            <h3>ADDRESS: {{data.PG_code.Address}}</h3>
+            <h3>PHONE NO: {{data.PG_code.Phn_no}}</h3>
+            <p>&emsp;&emsp;{{data.PG_code.description}}</p>
+            <a href="{% url 'pgdetailsurl'%}"><button>Back</button></a>
+        </div>
+    </div>
+</body>
+
+</html>

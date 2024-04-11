@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <!-- humanSignUpPage.html -->
+
+<form action="" method="post">
+    {% csrf_token %}
+    <div id="text">
+        {{ form.username.label }} {{ form.username }} <br><br>
+        {{ form.first_name.label }} {{ form.first_name }} <br><br>
+        {{ form.last_name.label }} {{ form.last_name }} <br><br>
+        {{ form.email.label }} {{ form.email }} <br><br>
+        {{form.password1.label}} {{form.password1}} <br><br>
+        {{form.password2.label}} {{form.password2}} <br><br>
+        <label for="group">Select Group:</label>
+        <select name="group" id="group">
+            {% for group in form1 %}
+                <option value="{{ group.id }}">{{ group.name }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" value="Sign Up">
+    </div>
+</form>
+
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                {{ error }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+
+    </body>
+</html>

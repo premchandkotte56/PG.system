@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            img{
+                
+                background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100vh;
+
+            }
+            *{
+                margin: 0px;
+                margin-bottom: 0%;
+                padding: 0px;
+            }
+        .f1{
+            position: absolute;
+            top: 225px;
+            left: 350px;
+        }
+        .f2{
+            position: absolute;
+            top: 225px;
+            left: 700px;
+        }
+        button{
+            padding: 17px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            border: 0;
+            background-color: white;
+            box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 15px;
+            transition: all 0.5s ease;
+}
+
+button:hover {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+button:active {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
+
+        
+    </style>
+    </head>
+    <body>
+        <img src="{%static 'images/clay-banks-u27Rrbs9Dwc-unsplash.jpg'%}" alt="">
+        <div class="first">
+            <div class="f1">
+                <a href="{% url 'studentloginurl' %}"><button>PG Accommodation</button></a>
+            </div>
+            <div class="f2">
+                <a href="{% url 'pgloginurl' %}"><button>PG Admin</button></a>
+            </div>
+    </div>
+    </body>
+</html>
