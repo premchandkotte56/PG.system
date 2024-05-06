@@ -78,9 +78,9 @@ WSGI_APPLICATION = 'PGproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pension',
+        'NAME': 'prem',
         'USER':'root',
-        'PASSWORD':'Rahul@210102',
+        'PASSWORD':'8639566491',
         'HOST':'localhost',
         'PORT':3306,
     }
